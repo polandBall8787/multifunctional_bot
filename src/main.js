@@ -1,6 +1,9 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js'
+import vuelnit from '@/core/vue.js'
 import dotenv from 'dotenv'
 
+
+vuelnit()
 dotenv.config()
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
