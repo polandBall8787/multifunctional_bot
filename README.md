@@ -1,6 +1,6 @@
 # multifunctional_bot
 使用語言: **java_script**
-目前最新版本: **5.00**
+目前最新版本: **0.10**
 
 介紹:
 1. **這是一個discord機器人**
