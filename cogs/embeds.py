@@ -1,18 +1,28 @@
+import discord
 from core.classes import Cog_Extension
 from discord.ext import commands
-import discord
 import datetime
 
+def embeds(title, indexurl, description, color, username, userurl, usericon, icon_url, fieldname, fieldvalue, footertext):
+  embed=discord.Embed(title=title, url=indexurl, description=description, color=color, 
+  timestamp=datetime.datetime.now())
+  embed.set_author(name=username, url=userurl, icon_url=usericon)
+  embed.set_thumbnail(url=icon_url)
+  embed.add_field(name=fieldname, value=fieldvalue, inline=True)
+  embed.set_footer(text=footertext)
+  return embed
+
 class Embeds(Cog_Extension):
-  
+
   @commands.command()
   async def subscribe(self, ctx):
-    embed=discord.Embed(title="訂閱!!", url="https://www.youtube.com/channel/UCi1elWTL51OYLQkhQYjAjPA", description="趕快訂閱!!!!!", color=0x515fc2, 
-    timestamp=datetime.datetime.now())
-    embed.set_author(name="余泓叡", url="https://www.youtube.com/channel/UCi1elWTL51OYLQkhQYjAjPA", icon_url="https://i.postimg.cc/hjzrh9cT/image.png")
-    embed.set_thumbnail(url="https://i.postimg.cc/hjzrh9cT/image.png")
-    embed.add_field(name="訂閱訂閱訂閱訂閱訂閱訂閱", value="快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!", inline=True)
-    embed.set_footer(text="還在看什麼 快去訂閱阿！")
+    embed=embeds("訂閱!!", "https://www.youtube.com/channel/UCi1elWTL51OYLQkhQYjAjPA",
+"趕快訂閱!!!!!", 0x515fc2, "余泓叡", "https://www.youtube.com/channel/UCi1elWTL51OYLQkhQYjAjPA",
+"https://i.postimg.cc/hjzrh9cT/image.png", 
+"https://i.postimg.cc/hjzrh9cT/image.png", 
+"訂閱訂閱訂閱訂閱訂閱訂閱",
+"快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!快去訂閱!",
+"還在看什麼 快去訂閱阿！")
     await ctx.send(embed=embed)
 
 async def setup(bot: commands.Bot):

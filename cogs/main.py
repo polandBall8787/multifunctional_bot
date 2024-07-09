@@ -1,6 +1,6 @@
+import discord
 from core.classes import Cog_Extension
 from discord.ext import commands
-import discord
 import json
 
 with open('config.json', 'r', encoding='utf-8') as f:
@@ -15,8 +15,13 @@ class Main(Cog_Extension):
         await self.bot.close()
 
     @commands.command()
-    async def repeat(self, ctx, *, message: str):
-        await ctx.send(message)
+    async def say(self, ctx, *, msg):
+        await ctx.message.delete()
+        await ctx.send(msg)
+
+    @commands.command()
+    async def dels(self, ctx, num: int):
+        await ctx.channel.purge(limit=num+1)
 
     @commands.command()
     async def ping(self, ctx):

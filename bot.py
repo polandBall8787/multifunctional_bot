@@ -1,8 +1,8 @@
-from discord.ext import commands
 import discord
+from discord.ext import commands
 import asyncio
-import os
 import json
+import os
 
 with open('config.json', 'r', encoding='utf-8') as f:
     config = json.load(f)
