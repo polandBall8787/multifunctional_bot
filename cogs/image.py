@@ -12,7 +12,7 @@ with open('config.json', 'r', encoding='utf-8') as f:
 class Image(Cog_Extension):
 
     @commands.command()
-    async def image(self, ctx):
+    async def 召換圖片(self, ctx):
         options = ["poland", "a_c_cat", "noname", "random"]
         await ctx.send("請選擇你要的圖片:\n" + "\n".join(options))
 

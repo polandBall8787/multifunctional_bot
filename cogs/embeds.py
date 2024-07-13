@@ -15,7 +15,7 @@ def embeds(title, indexurl, description, color, username, userurl, usericon, ico
 class Embeds(Cog_Extension):
 
   @commands.command()
-  async def subscribe(self, ctx):
+  async def 訂閱(self, ctx):
     embed=embeds("訂閱!!", "https://www.youtube.com/channel/UCi1elWTL51OYLQkhQYjAjPA",
 "趕快訂閱!!!!!", 0x515fc2, "余泓叡", "https://www.youtube.com/channel/UCi1elWTL51OYLQkhQYjAjPA",
 "https://i.postimg.cc/hjzrh9cT/image.png", 
