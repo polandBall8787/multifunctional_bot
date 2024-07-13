@@ -19,9 +19,19 @@ class Task(Cog_Extension):
         now_time = datetime.datetime.now().strftime('%H%M')
         with open('config.json', 'r', encoding='utf-8') as f:
           config = json.load(f)
-        if now_time == config['time'] and self.counter == 0:
-          await self.channel.send('時間到了!')
+        if now_time == 0o730:
+          await self.channel.send('good morning!')
           await asyncio.sleep(1)
+          self.counter = 1
+        elif now_time == 0000:
+          await self.channel.send('如果你還在線的話 恭喜你你離猝死又進了一步')
+          await asyncio.sleep(1)
+          self.counter = 1
+        elif now_time == config['time'] and self.counter == 1:
+          await self.channel.send('時間到了！')
+          await asyncio.sleep(1)
+          self.counter = 0
+          await asyncio.sleep(60)
           self.counter = 1
         else:
           await asyncio.sleep(1)
