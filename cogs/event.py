@@ -27,5 +27,16 @@ class Event (Cog_Extension):
     if msg.content in keyword:
       await msg.channel.send('hi')
 
+  @commands.Cog.listener()
+  async def on_command_error(self, ctx, error):
+    if isinstance(error, commands.errors.CommandNotFound):
+      await ctx.send("你是弱智嗎？ 老子都好心給你help指令了 不會去看一下嗎？")
+    elif isinstance(error, commands.errors.MissingRequiredArgument):
+      await ctx.send("你是弱智嗎？ 老子都好心幫你寫指令使用方法了 不會去看一下嗎？")
+    elif isinstance(error, commands.errors.MissingRole):
+      await ctx.send("你是弱智嗎？ 阿你就是沒有這個身份組阿 老子都好心幫你寫指令使用方法了和權限了 不會去看一下嗎？")
+    else:
+      await ctx.send(f'damn! 程式出錯了! 錯誤資訊：{error}')
+
 async def setup(bot: commands.Bot):
   await bot.add_cog(Event(bot))

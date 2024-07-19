@@ -14,25 +14,15 @@ class Task(Cog_Extension):
 
     async def time_task():
       await self.bot.wait_until_ready()
-      self.channel = self.bot.get_channel(1247549967900348477)
+      self.channel = self.bot.get_channel(1089429892661260309)
       while not self.bot.is_closed():
         now_time = datetime.datetime.now().strftime('%H%M')
         with open('config.json', 'r', encoding='utf-8') as f:
           config = json.load(f)
-        if now_time == 0o730:
-          await self.channel.send('good morning!')
-          await asyncio.sleep(1)
+        if now_time == config['time']and self.counter == 0:
+          await self.channel.send('Task Working!')
           self.counter = 1
-        elif now_time == 0000:
-          await self.channel.send('如果你還在線的話 恭喜你你離猝死又進了一步')
           await asyncio.sleep(1)
-          self.counter = 1
-        elif now_time == config['time'] and self.counter == 1:
-          await self.channel.send('時間到了！')
-          await asyncio.sleep(1)
-          self.counter = 0
-          await asyncio.sleep(60)
-          self.counter = 1
         else:
           await asyncio.sleep(1)
           pass
@@ -41,13 +31,13 @@ class Task(Cog_Extension):
 
   @commands.command()
   @commands.has_role(int(config['bot_administrator']))
-  async def 鬧鐘頻道(self, ctx, ch: int):
+  async def task_channel(self, ctx, ch: int):
     self.channel = self.bot.get_channel(ch)
     await ctx.send(f'Set Channel: {self.channel.mention}')
 
   @commands.command()
   @commands.has_role(int(config['bot_administrator']))
-  async def 設定時間(self, ctx, time):
+  async def task_time(self, ctx, time):
     self.counter = 0
     with open('config.json', 'r', encoding='utf-8') as f:
       config = json.load(f)
