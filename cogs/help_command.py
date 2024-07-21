@@ -11,7 +11,7 @@ with open('config.json', 'r', encoding='utf-8') as f:
 class Help_Command(Cog_Extension):
   @commands.command()
   async def help(self, ctx):
-    options = ["main", "image", "role", "task"]
+    options = ["main", "role", "task"]
     embed = embeds("help", "https://trr-embed.mystrikingly.com",
     "**這是一個help指令 (功能:指令檢查)** \n 以下是所有的指令的分類 以及各項分類的功能描述UwU", 0x3584e4, "bot", "https://trr-embed.mystrikingly.com",
     "https://i.ibb.co/XXGNHbN/multifunctional-bot.png",
