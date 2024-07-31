@@ -9,6 +9,7 @@ class MainButton(discord.ui.View):
 
     @discord.ui.button(label="say 的詳細資訊", style=discord.ButtonStyle.success)
     async def say(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('say', "https://trr-embed.mystrikingly.com",
         "**讓機器人幫你說話** \n\n 以下是say的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
@@ -27,6 +28,7 @@ class MainButton(discord.ui.View):
 
     @discord.ui.button(label="random_team 的詳細資訊", style=discord.ButtonStyle.primary)
     async def random_team(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('random_team', "https://trr-embed.mystrikingly.com",
         "**隨機分組** \n\n 以下是random_team的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
@@ -45,6 +47,7 @@ class MainButton(discord.ui.View):
         
     @discord.ui.button(label="dels 的詳細資訊", style=discord.ButtonStyle.danger)
     async def dels(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('dels', "https://trr-embed.mystrikingly.com",
         "**批量刪除訊息** \n\n 以下是dels的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
@@ -63,8 +66,9 @@ class MainButton(discord.ui.View):
 
     @discord.ui.button(label="shutdown 的詳細資訊", style=discord.ButtonStyle.danger)
     async def shutdown(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('shutdown', "https://trr-embed.mystrikingly.com",
-        "**批量刪除訊息** \n\n 以下是shutdown的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
+        "**關機** \n\n 以下是shutdown的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
         "https://i.ibb.co/XXGNHbN/multifunctional-bot.png", 
         "趕快去試試吧!")
@@ -85,8 +89,9 @@ class RoleButton(discord.ui.View):
 
     @discord.ui.button(label="claim_role 的詳細資訊", style=discord.ButtonStyle.primary)
     async def claim_role(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('claim_role', "https://trr-embed.mystrikingly.com",
-        "**批量刪除訊息** \n\n 以下是claim_role的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
+        "**領取身分組** \n\n 以下是claim_role的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
         "https://i.ibb.co/XXGNHbN/multifunctional-bot.png", 
         "趕快去試試吧!")
@@ -103,7 +108,22 @@ class RoleButton(discord.ui.View):
 
     @discord.ui.button(label="remove_online_player_role 的詳細資訊", style=discord.ButtonStyle.danger)
     async def remove_online_player_role(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message("remove_online_player_role")
+        await interaction.message.delete()
+        embed=embeds('remove_online_player_role', "https://trr-embed.mystrikingly.com",
+        "**移除再現玩家身分組** \n\n 以下是remove_online_player_role的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
+        "https://trr-embed.mystrikingly.com","",
+        "https://i.ibb.co/XXGNHbN/multifunctional-bot.png", 
+        "趕快去試試吧!")
+
+        embed.add_field(name="功能", 
+        value="移除: **在線玩家身份組**",
+        inline=False)
+
+        embed.add_field(name="使用方法",
+        value="輸入:**`remove_online_player_role**就可以了",
+        inline=False)
+
+        await interaction.response.send_message(embed=embed)
 
 class TaskButton(discord.ui.View):
     def __init__(self):
@@ -111,11 +131,41 @@ class TaskButton(discord.ui.View):
 
     @discord.ui.button(label="task_time 的詳細資訊", style=discord.ButtonStyle.primary)
     async def task_time(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message("task_time")
+        await interaction.message.delete()
+        embed=embeds('task_time', "https://trr-embed.mystrikingly.com",
+        "**鬧鐘** \n\n 以下是task_time的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
+        "https://trr-embed.mystrikingly.com","",
+        "https://i.ibb.co/XXGNHbN/multifunctional-bot.png", 
+        "趕快去試試吧!")
+
+        embed.add_field(name="功能", 
+        value="這就只是一個鬧鐘我是能介紹什麼？(只有擁有**機器人管理者**的人能使用)",
+        inline=False)
+
+        embed.add_field(name="使用方法",
+        value="輸入:**`task_time**並加上你要設定的時間\n(例:`task_time 1660 註:時間的格式是:%H%M 例:17:01 = 1701)",
+        inline=False)
+
+        await interaction.response.send_message(embed=embed)
 
     @discord.ui.button(label="task_channel 的詳細資訊", style=discord.ButtonStyle.primary)
     async def task_channel(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message("task_channel")
+        await interaction.message.delete()
+        embed=embeds('task_channel', "https://trr-embed.mystrikingly.com",
+        "**鬧鐘頻道** \n\n 以下是task_time的指令使用方式 以及指令的功能描述UwU", 0x3584e4, "bot", 
+        "https://trr-embed.mystrikingly.com","",
+        "https://i.ibb.co/XXGNHbN/multifunctional-bot.png", 
+        "趕快去試試吧!")
+
+        embed.add_field(name="功能", 
+        value="設定鬧鐘時間到時出現訊息的頻道(只有擁有**機器人管理者**的人能使用)",
+        inline=False)
+
+        embed.add_field(name="使用方法",
+        value="輸入:**`task_channel**並加上你要的頻道\n(例:`task_channel 1089429892661260309",
+        inline=False)
+
+        await interaction.response.send_message(embed=embed)
 
 
 class button(discord.ui.View):
@@ -124,6 +174,7 @@ class button(discord.ui.View):
 
     @discord.ui.button(label="main", style=discord.ButtonStyle.primary)
     async def main(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('main', "https://trr-embed.mystrikingly.com",
         "**最基礎的指令** \n\n 以下是main底下的所有指令 以及各指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
@@ -152,6 +203,7 @@ class button(discord.ui.View):
     
     @discord.ui.button(label="role", style=discord.ButtonStyle.primary)
     async def role(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('role', "https://trr-embed.mystrikingly.com",
         "**跟身份組有關的指令** \n\n 以下是role底下的所有指令 以及各指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
@@ -171,6 +223,7 @@ class button(discord.ui.View):
     
     @discord.ui.button(label="task", style=discord.ButtonStyle.primary)
     async def task(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.message.delete()
         embed=embeds('task', "https://trr-embed.mystrikingly.com",
         "**鬧鐘** \n\n 以下是task底下的所有指令 以及各指令的功能描述UwU", 0x3584e4, "bot", 
         "https://trr-embed.mystrikingly.com","",
@@ -214,9 +267,8 @@ class Help_Command(Cog_Extension):
     value="load(載入)<-須要機器人管理者身份組\n unload(移除)<-須要機器人管理者身份組\n reload(重新載入) <-須要機器人管理者身份組",
     inline=False)
 
-    await ctx.send(embed=embed)
     view = button()
-    await ctx.send(view=view)
+    await ctx.send(embed=embed, view=view)
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Help_Command(bot))
