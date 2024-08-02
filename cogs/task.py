@@ -4,7 +4,7 @@ from core.classes import Cog_Extension
 import json, asyncio, datetime
 
 with open('config.json', 'r', encoding='utf-8') as f:
-    config = json.load(f)
+  config = json.load(f)
 
 class Task(Cog_Extension):
   def __init__(self, *args, **kwargs):
