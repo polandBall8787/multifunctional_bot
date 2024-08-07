@@ -3,6 +3,38 @@ from core.classes import Cog_Extension
 from core.embed_function import embeds
 from discord.ext import commands
 
+class HomeButton(discord.ui.View):
+  def __init__(self):
+    super().__init__()
+
+  @discord.ui.button(label="回主頁", style=discord.ButtonStyle.primary)
+  async def gohome(self, interaction: discord.Interaction, button: discord.ui.Button):
+    await interaction.message.delete()
+    embed=embeds("help", "https://trr-embed.mystrikingly.com",
+    "**這是一個help指令 (功能:指令檢查)** \n 以下是所有的指令的分類 以及各項分類的功能描述UwU", 0x3584e4, "bot",
+    "https://trr-embed.mystrikingly.com",
+    "https://i.ibb.co/XXGNHbN/multifunctional-bot.png",
+    "https://i.ibb.co/XXGNHbN/multifunctional-bot.png",
+    "註:請選擇您要查看的指令類別OwO")
+
+    embed.add_field(name='main', 
+    value="最基礎的指令",
+    inline=False)
+
+    embed.add_field(name='role', 
+    value="跟身份組取得有關的指令",
+    inline=False)
+
+    embed.add_field(name='task', 
+    value="鬧鐘(對 就只有這樣)",
+    inline=False)
+
+    embed.add_field(name="比較特殊的指令:",
+    value="load(載入)<-須要機器人管理者身份組\n unload(移除)<-須要機器人管理者身份組\n reload(重新載入) <-須要機器人管理者身份組",
+    inline=False)
+
+    await interaction.response.send_message(embed=embed)
+
 class MainButton(discord.ui.View):
   def __init__(self):
     super().__init__()
@@ -24,7 +56,8 @@ class MainButton(discord.ui.View):
     value="輸入:**`say**後面加上你要讓機器人幫你說的話\n(例:`say you are SB)",
     inline=False)
 
-    await interaction.response.send_message(embed=embed)
+    view = HomeButton()
+    await interaction.response.send_message(embed=embed, view=view)
 
   @discord.ui.button(label="random_team 的詳細資訊", style=discord.ButtonStyle.primary)
   async def random_team(self, interaction: discord.Interaction, button: discord.ui.Button):
