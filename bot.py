@@ -13,7 +13,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-  print("[ bot is online !!!]")
+  print("[ bot is online (OWO) !!!]")
   play_bot = bot.get_channel(int(config['play_bot']))
   await play_bot.send("我復活啦!")
 
